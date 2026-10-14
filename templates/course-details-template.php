@@ -198,9 +198,14 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
       </div>
 
       <div class="row g-4">
-        <?php foreach ($relatedCourses as $course): ?>
-          <?php include __DIR__ . '/course-card.php'; ?>
-        <?php endforeach; ?>
+        <?php 
+        $parentCourse = $course;
+        foreach ($relatedCourses as $relatedCourse): 
+            $course = $relatedCourse;
+            include __DIR__ . '/course-card.php'; 
+        endforeach; 
+        $course = $parentCourse;
+        ?>
       </div>
     </section>
   <?php endif; ?>

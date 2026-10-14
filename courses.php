@@ -35,10 +35,10 @@ $totalPublishedCount = count($courses);
 
 // 4. Set Dynamic SEO Metadata
 if ($selectedCategory) {
-    $pageTitle = e($selectedCategory['name']) . ' Courses & Certifications | ' . SITE_NAME;
+    $pageTitle = $selectedCategory['name'] . ' Courses & Certifications | ' . SITE_NAME;
     $pageDescription = !empty($selectedCategory['description']) 
         ? $selectedCategory['description'] 
-        : ('Explore our top-rated ' . e($selectedCategory['name']) . ' courses, bootcamps, and career certifications.');
+        : ('Explore our top-rated ' . $selectedCategory['name'] . ' courses, bootcamps, and career certifications.');
 } else {
     $pageTitle = 'Explore In-Demand Tech Courses & Programs | ' . SITE_NAME;
     $pageDescription = 'Browse our industry-curated online course catalog across Web Development, Data Science, AI, Cloud Computing, and Cybersecurity.';

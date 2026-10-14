@@ -1,0 +1,31 @@
+# ============================================================
+# EdTech Innovate - Apache URL Rewriting & Clean SEO Slugs
+# ============================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Disable directory browsing
+  Options -Indexes
+
+  # Serve existing files and directories directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Clean Course Details Route: /courses/course-slug -> course-details.php?slug=course-slug
+  RewriteRule ^courses/([a-zA-Z0-9\-_]+)/?$ course-details.php?slug=$1 [L,QSA]
+
+  # Clean Courses Directory Route: /courses -> courses.php
+  RewriteRule ^courses/?$ courses.php [L,QSA]
+
+  # Clean Page Routes: /about -> about.php, /contact -> contact.php
+  RewriteRule ^about/?$ about.php [L,QSA]
+  RewriteRule ^contact/?$ contact.php [L,QSA]
+
+  # Fallback 404 handler
+  ErrorDocument 404 404.php
+</IfModule>
+
+# Set UTF-8 character encoding
+AddDefaultCharset UTF-8

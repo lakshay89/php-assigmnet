@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="js" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bg)"/>
+  
+  <rect x="70" y="45" width="460" height="270" rx="12" fill="#0f172a" stroke="#d97706" stroke-width="2"/>
+  <rect x="70" y="45" width="460" height="38" rx="12" fill="#1e293b"/>
+  <circle cx="94" cy="64" r="5" fill="#ef4444"/>
+  <circle cx="110" cy="64" r="5" fill="#f59e0b"/>
+  <circle cx="126" cy="64" r="5" fill="#10b981"/>
+  <text x="150" y="68" font-family="monospace" font-size="11" fill="#94a3b8">app.js - Modern ES6+ Architecture</text>
+
+  <!-- JS Badge -->
+  <rect x="420" y="110" width="80" height="80" rx="12" fill="url(#js)"/>
+  <text x="470" y="170" font-family="sans-serif" font-weight="900" font-size="44" fill="#000000" text-anchor="end">JS</text>
+
+  <text x="100" y="130" font-family="monospace" font-size="14" fill="#fcd34d">const <tspan fill="#67e8f9">fetchCourses</tspan> = async () =&gt; {</text>
+  <text x="120" y="160" font-family="monospace" font-size="14" fill="#fcd34d">  const res = await fetch('/api/courses');</text>
+  <text x="120" y="190" font-family="monospace" font-size="14" fill="#fcd34d">  const data = await res.json();</text>
+  <text x="120" y="220" font-family="monospace" font-size="14" fill="#4ade80">  renderInteractiveGrid(data);</text>
+  <text x="100" y="250" font-family="monospace" font-size="14" fill="#fcd34d">};</text>
+  <text x="100" y="280" font-family="monospace" font-size="14" fill="#94a3b8">// Modular State &amp; Event Loop Mastery</text>
+</svg>

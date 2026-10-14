@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082f49" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="docker" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bg)"/>
+  
+  <rect x="70" y="45" width="460" height="270" rx="12" fill="#0c1726" stroke="#0284c7" stroke-width="2"/>
+  <rect x="70" y="45" width="460" height="38" rx="12" fill="#1e293b"/>
+  <circle cx="94" cy="64" r="5" fill="#ef4444"/>
+  <circle cx="110" cy="64" r="5" fill="#f59e0b"/>
+  <circle cx="126" cy="64" r="5" fill="#10b981"/>
+  <text x="150" y="68" font-family="monospace" font-size="11" fill="#7dd3fc">docker-compose.yml - Multi-Container K8s</text>
+
+  <!-- Container Blocks -->
+  <g transform="translate(100, 110)">
+    <rect x="0" y="20" width="30" height="20" rx="3" fill="#38bdf8"/>
+    <rect x="35" y="20" width="30" height="20" rx="3" fill="#38bdf8"/>
+    <rect x="70" y="20" width="30" height="20" rx="3" fill="#38bdf8"/>
+    <rect x="35" y="-5" width="30" height="20" rx="3" fill="#38bdf8"/>
+    <rect x="70" y="-5" width="30" height="20" rx="3" fill="#38bdf8"/>
+    <!-- Whale Body -->
+    <path d="M-10 45C5 45 15 55 35 55C55 55 85 40 120 40C150 40 160 65 145 80C130 95 90 95 40 95C10 95 -15 80 -15 65C-15 50 -15 45 -10 45Z" fill="url(#docker)"/>
+    <circle cx="130" cy="60" r="3" fill="#ffffff"/>
+  </g>
+
+  <!-- Pipeline Steps -->
+  <rect x="290" y="110" width="200" height="40" rx="8" fill="#1e293b" stroke="#38bdf8"/>
+  <text x="310" y="135" font-family="monospace" font-size="12" fill="#38bdf8">1. Build Docker Image</text>
+
+  <rect x="290" y="160" width="200" height="40" rx="8" fill="#1e293b" stroke="#10b981"/>
+  <text x="310" y="185" font-family="monospace" font-size="12" fill="#34d399">2. Automated PHP Tests</text>
+
+  <rect x="290" y="210" width="200" height="40" rx="8" fill="#1e293b" stroke="#f59e0b"/>
+  <text x="310" y="235" font-family="monospace" font-size="12" fill="#fbbf24">3. Deploy to Kubernetes</text>
+</svg>

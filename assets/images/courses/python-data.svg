@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="chart" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bg)"/>
+  
+  <rect x="70" y="45" width="460" height="270" rx="12" fill="#022c22" stroke="#059669" stroke-width="2"/>
+  <rect x="70" y="45" width="460" height="38" rx="12" fill="#064e3b"/>
+  <circle cx="94" cy="64" r="5" fill="#ef4444"/>
+  <circle cx="110" cy="64" r="5" fill="#f59e0b"/>
+  <circle cx="126" cy="64" r="5" fill="#10b981"/>
+  <text x="150" y="68" font-family="monospace" font-size="11" fill="#6ee7b7">data_pipeline.py - Pandas &amp; Scikit-Learn</text>
+
+  <!-- Bar Chart Illustration -->
+  <rect x="330" y="190" width="28" height="90" rx="4" fill="url(#chart)" opacity="0.7"/>
+  <rect x="370" y="140" width="28" height="140" rx="4" fill="url(#chart)" opacity="0.85"/>
+  <rect x="410" y="165" width="28" height="115" rx="4" fill="url(#chart)" opacity="0.75"/>
+  <rect x="450" y="110" width="28" height="170" rx="4" fill="url(#chart)"/>
+
+  <!-- Code -->
+  <text x="100" y="130" font-family="monospace" font-size="13" fill="#6ee7b7">import <tspan fill="#f8fafc">pandas</tspan> as pd</text>
+  <text x="100" y="160" font-family="monospace" font-size="13" fill="#6ee7b7">import <tspan fill="#f8fafc">numpy</tspan> as np</text>
+  <text x="100" y="190" font-family="monospace" font-size="13" fill="#38bdf8">model = RandomForest()</text>
+  <text x="100" y="220" font-family="monospace" font-size="13" fill="#a7f3d0">model.fit(X_train, y_train)</text>
+  <text x="100" y="250" font-family="monospace" font-size="13" fill="#fbbf24">acc = model.score(X_test, y)</text>
+  <text x="100" y="280" font-family="monospace" font-size="13" fill="#34d399"># Accuracy: 98.4% ✅</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="aws" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="360" rx="16" fill="url(#bg)"/>
+  
+  <rect x="70" y="45" width="460" height="270" rx="12" fill="#0b1120" stroke="#f97316" stroke-width="2"/>
+  <rect x="70" y="45" width="460" height="38" rx="12" fill="#1e293b"/>
+  <circle cx="94" cy="64" r="5" fill="#ef4444"/>
+  <circle cx="110" cy="64" r="5" fill="#f59e0b"/>
+  <circle cx="126" cy="64" r="5" fill="#10b981"/>
+  <text x="150" y="68" font-family="monospace" font-size="11" fill="#fdba74">aws_vpc_architecture.tf - Terraform Cloud</text>
+
+  <!-- Cloud Icon Graphic -->
+  <g transform="translate(110, 110)">
+    <path d="M40 90C17.9 90 0 72.1 0 50C0 30.6 13.8 14.5 32.3 10.8C39.4 4 49.2 0 60 0C74.6 0 87.2 7.5 94.6 18.8C99.2 16.9 104.5 16 110 16C132.1 16 150 33.9 150 56C150 58.1 149.8 60.1 149.5 62C155.8 65.5 160 72.2 160 80C160 91 151 100 140 100H40V90Z" fill="url(#aws)"/>
+    <text x="80" y="65" font-family="sans-serif" font-size="20" font-weight="900" fill="#ffffff" text-anchor="middle">AWS</text>
+  </g>
+
+  <!-- Network Connected Nodes -->
+  <rect x="330" y="110" width="160" height="44" rx="8" fill="#1e293b" stroke="#38bdf8"/>
+  <text x="345" y="137" font-family="monospace" font-size="12" fill="#38bdf8">⚡ EC2 + AutoScale</text>
+
+  <rect x="330" y="170" width="160" height="44" rx="8" fill="#1e293b" stroke="#10b981"/>
+  <text x="345" y="197" font-family="monospace" font-size="12" fill="#34d399">📦 S3 &amp; CloudFront</text>
+
+  <rect x="330" y="230" width="160" height="44" rx="8" fill="#1e293b" stroke="#a855f7"/>
+  <text x="345" y="257" font-family="monospace" font-size="12" fill="#c084fc">🗄️ Aurora Multi-AZ</text>
+</svg>

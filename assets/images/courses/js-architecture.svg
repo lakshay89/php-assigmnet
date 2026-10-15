@@ -18,7 +18,6 @@
   <circle cx="126" cy="64" r="5" fill="#10b981"/>
   <text x="150" y="68" font-family="monospace" font-size="11" fill="#94a3b8">app.js - Modern ES6+ Architecture</text>
 
-  <!-- JS Badge -->
   <rect x="420" y="110" width="80" height="80" rx="12" fill="url(#js)"/>
   <text x="470" y="170" font-family="sans-serif" font-weight="900" font-size="44" fill="#000000" text-anchor="end">JS</text>
 

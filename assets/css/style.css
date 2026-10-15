@@ -1,22 +1,15 @@
-/* ==========================================================================
-   EdTech Innovate - Master Custom Stylesheet
-   Framework: Bootstrap 5 + Vanilla CSS Custom Properties
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
   --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Primary Palette */
   --primary-color: #4f46e5;
   --primary-hover: #4338ca;
   --primary-subtle: #eef2ff;
   --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
   --hero-gradient: linear-gradient(145deg, #0f172a 0%, #1e1b4b 60%, #1e293b 100%);
 
-  /* Neutral Tones */
   --text-main: #0f172a;
   --text-muted: #64748b;
   --text-light: #94a3b8;
@@ -25,13 +18,11 @@
   --border-subtle: #e2e8f0;
   --border-focus: #818cf8;
 
-  /* Accent & Status */
   --accent-cyan: #06b6d4;
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
 
-  /* Elevation Shadows */
   --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
   --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 12px 28px rgba(15, 23, 42, 0.12);
@@ -48,10 +39,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
-/* ==========================================================================
-   Typography & Global Utilities
-   ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-main);
@@ -104,15 +91,10 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
 }
 
-/* Accessible Focus States */
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
-
-/* ==========================================================================
-   Navigation Bar
-   ========================================================================== */
 
 .site-navbar {
   background-color: rgba(255, 255, 255, 0.96);
@@ -145,10 +127,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--primary-color);
   background-color: var(--primary-subtle);
 }
-
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
 
 .hero-section {
   position: relative;
@@ -205,10 +183,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--text-muted);
   margin-bottom: 0;
 }
-
-/* ==========================================================================
-   Course Cards (Reusable Component)
-   ========================================================================== */
 
 .course-card {
   background: var(--bg-card);
@@ -328,10 +302,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--text-main);
 }
 
-/* ==========================================================================
-   Category Cards & Filter Bar
-   ========================================================================== */
-
 .category-card {
   background: #ffffff;
   border: 1px solid var(--border-subtle);
@@ -371,7 +341,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: #ffffff;
 }
 
-/* Filter Buttons */
 .filter-pill {
   padding: 0.5rem 1.25rem;
   border-radius: var(--radius-pill);
@@ -404,10 +373,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background-color: rgba(255, 255, 255, 0.25) !important;
   color: #ffffff !important;
 }
-
-/* ==========================================================================
-   Course Details Page
-   ========================================================================== */
 
 .course-details-hero {
   background: var(--hero-gradient);
@@ -488,10 +453,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: #334155;
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
-
 .site-footer {
   background-color: #0b1329;
   color: #94a3b8;
@@ -523,10 +484,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: 0.85rem;
 }
 
-/* ==========================================================================
-   Empty States & Alert Feedback
-   ========================================================================== */
-
 .empty-state {
   text-align: center;
   padding: 4rem 1.5rem;
@@ -540,10 +497,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: #cbd5e1;
   margin-bottom: 1rem;
 }
-
-/* ==========================================================================
-   Responsive Adaptations
-   ========================================================================== */
 
 @media (max-width: 991.98px) {
   .hero-section {

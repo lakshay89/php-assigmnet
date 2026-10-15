@@ -1,17 +1,8 @@
 <?php
-/**
- * Database Configuration & Connection Handler
- * EdTech Innovate - Online Course Website
- * 
- * Provides a robust PDO connection with error handling and prepared statements.
- */
-
-// Prevent direct script execution if accessed outside root index/controllers
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Database Credentials & Settings
 define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
 define('DB_PORT', getenv('DB_PORT') ?: '3306');
 define('DB_NAME', getenv('DB_NAME') ?: 'edtech_db');
@@ -19,21 +10,12 @@ define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 define('DB_CHARSET', 'utf8mb4');
 
-// Site Information & URL Settings
 define('SITE_NAME', 'EdTech Innovate');
 define('SITE_TAGLINE', 'Empowering Tomorrow\'s Tech Leaders Today');
 define('CURRENCY_SYMBOL', '$');
 
-// Set to true if running under Apache with mod_rewrite enabled (.htaccess)
-// Set to false if running on basic servers without URL rewriting
 define('ENABLE_CLEAN_URLS', true);
 
-/**
- * Returns a PDO connection instance (Singleton pattern)
- * 
- * @return PDO
- * @throws PDOException
- */
 function get_db_connection(): PDO {
     static $pdo = null;
 
@@ -56,10 +38,8 @@ function get_db_connection(): PDO {
         try {
             $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         } catch (PDOException $e) {
-            // Log error internally; never reveal raw database credentials to the end user
             error_log('Database Connection Failure: ' . $e->getMessage());
 
-            // Render a friendly maintenance/error display
             http_response_code(500);
             ?>
             <!DOCTYPE html>

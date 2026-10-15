@@ -1,11 +1,4 @@
 <?php
-/**
- * Reusable Course Card Component
- * EdTech Innovate - Online Course Website
- * 
- * Expected scope variable: array $course
- */
-
 if (!isset($course) || !is_array($course)) {
     return;
 }
@@ -24,7 +17,6 @@ $detailsUrl  = course_url($courseSlug);
 
 <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
   <article class="course-card w-100" id="course-card-<?php echo e($course['id'] ?? 'item'); ?>">
-    <!-- Thumbnail Media -->
     <div class="course-card-thumb-wrapper">
       <a href="<?php echo $detailsUrl; ?>" tabindex="-1" aria-hidden="true">
         <img 
@@ -36,7 +28,6 @@ $detailsUrl  = course_url($courseSlug);
         >
       </a>
 
-      <!-- Category Badge on Card -->
       <div class="course-card-badge-top">
         <span class="badge bg-white text-dark shadow-sm border px-2.5 py-1.5 fw-semibold small">
           <i class="bi bi-tag-fill text-primary me-1"></i><?php echo e($catName); ?>
@@ -44,7 +35,6 @@ $detailsUrl  = course_url($courseSlug);
       </div>
     </div>
 
-    <!-- Card Content -->
     <div class="course-card-body">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <span class="course-card-category"><?php echo e($catName); ?></span>
@@ -61,13 +51,11 @@ $detailsUrl  = course_url($courseSlug);
         <?php echo e($shortDesc); ?>
       </p>
 
-      <!-- Metadata Strip -->
       <div class="course-card-meta">
         <span><i class="bi bi-clock me-1 text-primary"></i><?php echo e($duration); ?></span>
         <span><i class="bi bi-mortarboard me-1 text-primary"></i>Certificate</span>
       </div>
 
-      <!-- Footer & Action -->
       <div class="course-card-footer">
         <div class="course-card-price">
           <?php echo format_price($price, true); ?>

@@ -1,34 +1,14 @@
 <?php
-/**
- * Shared Helper Functions & Repository Queries
- * EdTech Innovate - Online Course Website
- */
-
 require_once __DIR__ . '/../config/database.php';
 
-/**
- * Safely escape string for HTML output (prevents XSS)
- * 
- * @param mixed $value
- * @return string
- */
 function e($value): string {
     return htmlspecialchars((string)($value ?? ''), ENT_QUOTES, 'UTF-8');
 }
 
-/**
- * Returns the detected base URL for the application.
- * Automatically accommodates root domain or subfolder deployments (e.g. /php-assignment/).
- * 
- * @param string $path
- * @return string
- */
 function base_url(string $path = ''): string {
-    // Determine the base path from SCRIPT_NAME
     $scriptDir = dirname($_SERVER['SCRIPT_NAME'] ?? '');
     $base = ($scriptDir === '/' || $scriptDir === '\\') ? '' : rtrim(str_replace('\\', '/', $scriptDir), '/');
 
-    // If scriptDir ends with /templates or /includes, traverse up to project root
     $base = preg_replace('#/(includes|templates|config)$#', '', $base);
 
     $cleanPath = ltrim($path, '/');
@@ -39,12 +19,6 @@ function base_url(string $path = ''): string {
     return ($base !== '' ? $base . '/' : '/') . $cleanPath;
 }
 
-/**
- * Generates an SEO-friendly URL for a course details page
- * 
- * @param string $slug
- * @return string
- */
 function course_url(string $slug): string {
     $encodedSlug = rawurlencode($slug);
     if (defined('ENABLE_CLEAN_URLS') && ENABLE_CLEAN_URLS) {
@@ -53,13 +27,6 @@ function course_url(string $slug): string {
     return base_url('course-details.php?slug=' . $encodedSlug);
 }
 
-/**
- * Formats a numeric price into a currency string or "Free" badge
- * 
- * @param float|string|null $price
- * @param bool $asHtml
- * @return string
- */
 function format_price($price, bool $asHtml = true): string {
     $numeric = (float)($price ?? 0);
     if ($numeric <= 0.001) {
@@ -71,13 +38,6 @@ function format_price($price, bool $asHtml = true): string {
     return $asHtml ? '<span class="fw-bold text-primary">' . e($formatted) . '</span>' : $formatted;
 }
 
-/**
- * Truncate long text strings cleanly at word boundaries
- * 
- * @param string $text
- * @param int $limit
- * @return string
- */
 function truncate_text(string $text, int $limit = 120): string {
     $stripped = strip_tags($text);
     if (mb_strlen($stripped) <= $limit) {
@@ -91,11 +51,6 @@ function truncate_text(string $text, int $limit = 120): string {
     return $cut . '...';
 }
 
-/**
- * Generates or retrieves existing CSRF token
- * 
- * @return string
- */
 function get_csrf_token(): string {
     if (empty($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -103,12 +58,6 @@ function get_csrf_token(): string {
     return $_SESSION['csrf_token'];
 }
 
-/**
- * Verifies submitted CSRF token
- * 
- * @param string|null $token
- * @return bool
- */
 function verify_csrf_token(?string $token): bool {
     if (empty($token) || empty($_SESSION['csrf_token'])) {
         return false;
@@ -116,12 +65,6 @@ function verify_csrf_token(?string $token): bool {
     return hash_equals($_SESSION['csrf_token'], $token);
 }
 
-/**
- * Set a flash notification message in session
- * 
- * @param string $type 'success', 'danger', 'warning', 'info'
- * @param string $message
- */
 function set_flash(string $type, string $message): void {
     if (!isset($_SESSION['flash'])) {
         $_SESSION['flash'] = [];
@@ -129,12 +72,6 @@ function set_flash(string $type, string $message): void {
     $_SESSION['flash'][$type] = $message;
 }
 
-/**
- * Retrieve and clear flash message
- * 
- * @param string $type
- * @return string|null
- */
 function get_flash(string $type): ?string {
     if (isset($_SESSION['flash'][$type])) {
         $msg = $_SESSION['flash'][$type];
@@ -144,11 +81,6 @@ function get_flash(string $type): ?string {
     return null;
 }
 
-/**
- * Fetch all active categories with published course counts
- * 
- * @return array
- */
 function get_all_categories(): array {
     $db = get_db_connection();
     $sql = "SELECT c.id, c.name, c.slug, c.description, c.icon,
@@ -162,12 +94,6 @@ function get_all_categories(): array {
     return $stmt->fetchAll();
 }
 
-/**
- * Fetch category by slug
- * 
- * @param string $slug
- * @return array|null
- */
 function get_category_by_slug(string $slug): ?array {
     $db = get_db_connection();
     $stmt = $db->prepare("SELECT * FROM categories WHERE slug = :slug AND status = 'active' LIMIT 1");
@@ -176,12 +102,6 @@ function get_category_by_slug(string $slug): ?array {
     return $cat ?: null;
 }
 
-/**
- * Fetch featured published courses
- * 
- * @param int $limit
- * @return array
- */
 function get_featured_courses(int $limit = 4): array {
     $db = get_db_connection();
     $sql = "SELECT co.*, c.name AS category_name, c.slug AS category_slug
@@ -196,12 +116,6 @@ function get_featured_courses(int $limit = 4): array {
     return $stmt->fetchAll();
 }
 
-/**
- * Fetch published courses with optional category filter
- * 
- * @param int|null $categoryId
- * @return array
- */
 function get_published_courses(?int $categoryId = null): array {
     $db = get_db_connection();
     $params = [];
@@ -221,12 +135,6 @@ function get_published_courses(?int $categoryId = null): array {
     return $stmt->fetchAll();
 }
 
-/**
- * Fetch a single course by its slug (Only published courses)
- * 
- * @param string $slug
- * @return array|null
- */
 function get_course_by_slug(string $slug): ?array {
     $db = get_db_connection();
     $sql = "SELECT co.*, c.name AS category_name, c.slug AS category_slug
@@ -240,14 +148,6 @@ function get_course_by_slug(string $slug): ?array {
     return $course ?: null;
 }
 
-/**
- * Fetch related courses in the same category
- * 
- * @param int $categoryId
- * @param int $currentCourseId
- * @param int $limit
- * @return array
- */
 function get_related_courses(int $categoryId, int $currentCourseId, int $limit = 3): array {
     $db = get_db_connection();
     $sql = "SELECT co.*, c.name AS category_name, c.slug AS category_slug
@@ -266,12 +166,6 @@ function get_related_courses(int $categoryId, int $currentCourseId, int $limit =
     return $stmt->fetchAll();
 }
 
-/**
- * Save contact form submission to database
- * 
- * @param array $data
- * @return bool
- */
 function save_contact_message(array $data): bool {
     $db = get_db_connection();
     $sql = "INSERT INTO contact_messages (name, email, subject, message, ip_address)

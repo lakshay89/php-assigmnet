@@ -1,31 +1,16 @@
 <?php
-/**
- * Contact Us Page & Inquiries Handler
- * EdTech Innovate - Online Course Website
- * 
- * Features:
- * - Server-side validation with strict email and length filters
- * - Client-side validation (Bootstrap 5 needs-validation)
- * - CSRF token generation and validation
- * - POST/Redirect/GET pattern to prevent accidental duplicate submission
- * - Persistent storage in MySQL (contact_messages table) with prepared statements
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
-// Handle Form Submission (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $csrfToken = $_POST['csrf_token'] ?? '';
     
-    // 1. Verify CSRF Token
     if (!verify_csrf_token($csrfToken)) {
         set_flash('danger', 'Security validation failed (Invalid CSRF token). Please refresh and submit again.');
         header('Location: ' . base_url('contact.php'));
         exit;
     }
 
-    // 2. Sanitize and Extract Input
     $name    = trim($_POST['name'] ?? '');
     $email   = trim($_POST['email'] ?? '');
     $subject = trim($_POST['subject'] ?? '');
@@ -33,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = [];
 
-    // 3. Server-Side Validation Rules
     if ($name === '') {
         $errors['name'] = 'Full name is required.';
     } elseif (mb_strlen($name) < 2 || mb_strlen($name) > 100) {
@@ -62,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['message'] = 'Message is too long (maximum 3,000 characters).';
     }
 
-    // 4. Handle Validation Failures
     if (!empty($errors)) {
         $_SESSION['form_errors'] = $errors;
         $_SESSION['form_old'] = [
@@ -76,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // 5. Persist to Database via Prepared Statements
     try {
         $saved = save_contact_message([
             'name'    => $name,
@@ -95,19 +77,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         set_flash('danger', 'A database error occurred while saving your message. Please try again later.');
     }
 
-    // 6. POST/Redirect/GET completion
     header('Location: ' . base_url('contact.php'));
     exit;
 }
 
-// Retrieve Flash Messages & Form Old Input
 $flashSuccess = get_flash('success');
 $flashDanger  = get_flash('danger');
 $formErrors   = $_SESSION['form_errors'] ?? [];
 $formOld      = $_SESSION['form_old'] ?? [];
 unset($_SESSION['form_errors'], $_SESSION['form_old']);
 
-// Pre-fill subject if passed via GET query parameter (e.g. from Course Details)
 $prefillSubject = trim($_GET['subject'] ?? ($formOld['subject'] ?? ''));
 
 $pageTitle = 'Contact Admissions & Support | ' . SITE_NAME;
@@ -118,7 +97,6 @@ $currentRoute = 'contact.php';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Contact Header Banner -->
 <section class="bg-white border-bottom py-5">
   <div class="container py-lg-3">
     <div class="row align-items-center">
@@ -138,12 +116,10 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Main Contact Section -->
 <section class="py-5">
   <div class="container">
     <div class="row g-4 g-lg-5">
 
-      <!-- Left Column: Contact Form -->
       <div class="col-lg-7">
         <div class="card border-0 rounded-4 shadow-sm p-4 p-md-5 bg-white">
           <h2 class="h4 fw-bold mb-2">Send an Inquiry</h2>
@@ -151,7 +127,6 @@ include __DIR__ . '/includes/header.php';
             Fill in the details below. All submissions are validated server-side and recorded securely.
           </p>
 
-          <!-- Flash Notification Banners -->
           <?php if ($flashSuccess): ?>
             <div class="alert alert-success alert-dismissible fade show rounded-3 d-flex align-items-start mb-4" role="alert">
               <i class="bi bi-check-circle-fill fs-4 me-3 text-success"></i>
@@ -174,13 +149,10 @@ include __DIR__ . '/includes/header.php';
             </div>
           <?php endif; ?>
 
-          <!-- Contact Form with POST / Redirect / GET & CSRF -->
           <form action="<?php echo base_url('contact.php'); ?>" method="POST" class="needs-validation" novalidate id="contact-form">
-            <!-- CSRF Protection Token -->
             <input type="hidden" name="csrf_token" value="<?php echo e(get_csrf_token()); ?>">
 
             <div class="row g-3">
-              <!-- Name Field -->
               <div class="col-md-6">
                 <label for="contact-name" class="form-label fw-semibold small">Your Full Name <span class="text-danger">*</span></label>
                 <div class="input-group">
@@ -203,7 +175,6 @@ include __DIR__ . '/includes/header.php';
                 </div>
               </div>
 
-              <!-- Email Field -->
               <div class="col-md-6">
                 <label for="contact-email" class="form-label fw-semibold small">Email Address <span class="text-danger">*</span></label>
                 <div class="input-group">
@@ -225,7 +196,6 @@ include __DIR__ . '/includes/header.php';
                 </div>
               </div>
 
-              <!-- Subject Field -->
               <div class="col-12">
                 <label for="contact-subject" class="form-label fw-semibold small">Subject <span class="text-danger">*</span></label>
                 <div class="input-group">
@@ -247,7 +217,6 @@ include __DIR__ . '/includes/header.php';
                 </div>
               </div>
 
-              <!-- Message Field -->
               <div class="col-12">
                 <label for="contact-message" class="form-label fw-semibold small">Message Content <span class="text-danger">*</span></label>
                 <textarea 
@@ -268,7 +237,6 @@ include __DIR__ . '/includes/header.php';
                 </div>
               </div>
 
-              <!-- Submit Button -->
               <div class="col-12 mt-4">
                 <button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold">
                   <i class="bi bi-send-fill me-2"></i> Submit Inquiry
@@ -279,10 +247,8 @@ include __DIR__ . '/includes/header.php';
         </div>
       </div>
 
-      <!-- Right Column: Contact Details & Info Cards -->
       <div class="col-lg-5">
         <div class="d-flex flex-column gap-4">
-          <!-- Card 1: Direct Support -->
           <div class="card border-0 rounded-4 shadow-sm p-4 bg-white">
             <div class="d-flex align-items-center gap-3 mb-3">
               <div class="category-icon-box" style="width: 48px; height: 48px; font-size: 1.3rem;">
@@ -301,7 +267,6 @@ include __DIR__ . '/includes/header.php';
             </p>
           </div>
 
-          <!-- Card 2: Campus Location -->
           <div class="card border-0 rounded-4 shadow-sm p-4 bg-white">
             <div class="d-flex align-items-center gap-3 mb-3">
               <div class="category-icon-box" style="width: 48px; height: 48px; font-size: 1.3rem;">
@@ -322,7 +287,6 @@ include __DIR__ . '/includes/header.php';
             </p>
           </div>
 
-          <!-- Card 3: Operating Hours -->
           <div class="card border-0 rounded-4 shadow-sm p-4 bg-white">
             <div class="d-flex align-items-center gap-3 mb-3">
               <div class="category-icon-box" style="width: 48px; height: 48px; font-size: 1.3rem;">

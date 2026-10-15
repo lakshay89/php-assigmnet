@@ -10,25 +10,21 @@
     </linearGradient>
   </defs>
   <rect width="600" height="360" rx="16" fill="url(#bg)"/>
-  
-  <!-- Smartphone Frame Mockup -->
+
   <rect x="230" y="30" width="140" height="290" rx="24" fill="#0f172a" stroke="#0284c7" stroke-width="3"/>
   <rect x="270" y="40" width="60" height="10" rx="5" fill="#334155"/>
   <rect x="240" y="60" width="120" height="230" rx="14" fill="#1e293b"/>
-  
-  <!-- App content inside phone -->
+
   <rect x="250" y="75" width="100" height="30" rx="6" fill="url(#screen)"/>
   <rect x="250" y="115" width="45" height="40" rx="6" fill="#334155"/>
   <rect x="305" y="115" width="45" height="40" rx="6" fill="#334155"/>
   <rect x="250" y="165" width="100" height="50" rx="8" fill="#38bdf8" opacity="0.2"/>
   <rect x="250" y="225" width="100" height="20" rx="10" fill="#0ea5e9"/>
 
-  <!-- Left Floating Details -->
   <text x="80" y="130" font-family="sans-serif" font-size="14" font-weight="bold" fill="#38bdf8">iOS &amp; Android</text>
   <text x="80" y="150" font-family="sans-serif" font-size="12" fill="#94a3b8">Native Performance</text>
   <text x="80" y="170" font-family="sans-serif" font-size="12" fill="#94a3b8">Single Codebase</text>
 
-  <!-- Right Floating Details -->
   <text x="420" y="130" font-family="sans-serif" font-size="14" font-weight="bold" fill="#38bdf8">React Native</text>
   <text x="420" y="150" font-family="sans-serif" font-size="12" fill="#94a3b8">Expo Router 3</text>
   <text x="420" y="170" font-family="sans-serif" font-size="12" fill="#94a3b8">60 FPS Animations</text>

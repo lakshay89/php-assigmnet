@@ -1,9 +1,4 @@
 <?php
-/**
- * 404 Not Found Page
- * EdTech Innovate - Online Course Website
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 

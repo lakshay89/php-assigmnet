@@ -1,16 +1,8 @@
-<?php
-/**
- * Global Footer Component
- * EdTech Innovate - Online Course Website
- */
-?>
 </main>
 
-<!-- Professional Site Footer -->
 <footer class="site-footer mt-auto" role="contentinfo">
   <div class="container">
     <div class="row g-4 g-lg-5">
-      <!-- Col 1: Brand Info -->
       <div class="col-lg-4">
         <div class="mb-3">
           <img src="<?php echo base_url('assets/images/logo.svg'); ?>" alt="<?php echo e(SITE_NAME); ?>" height="38" style="filter: brightness(0) invert(1);">
@@ -34,7 +26,6 @@
         </div>
       </div>
 
-      <!-- Col 2: Quick Links -->
       <div class="col-6 col-lg-2">
         <h5 class="fw-bold">Platform</h5>
         <ul class="list-unstyled d-flex flex-column gap-2 small">
@@ -45,7 +36,6 @@
         </ul>
       </div>
 
-      <!-- Col 3: Popular Categories -->
       <div class="col-6 col-lg-3">
         <h5 class="fw-bold">Top Domains</h5>
         <ul class="list-unstyled d-flex flex-column gap-2 small">
@@ -57,7 +47,6 @@
         </ul>
       </div>
 
-      <!-- Col 4: Contact & Support -->
       <div class="col-lg-3">
         <h5 class="fw-bold">Get In Touch</h5>
         <p class="small text-light-subtle mb-2" style="color: #94a3b8;">
@@ -75,7 +64,6 @@
       </div>
     </div>
 
-    <!-- Bottom Copyright -->
     <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
       <div>
         &copy; <?php echo date('Y'); ?> <?php echo e(SITE_NAME); ?> Pvt Ltd. All rights reserved. Built with Core PHP, MySQL &amp; Bootstrap 5.
@@ -89,10 +77,9 @@
   </div>
 </footer>
 
-<!-- Bootstrap 5.3 JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-<!-- Master Client JavaScript -->
 <script src="<?php echo base_url('assets/js/main.js'); ?>"></script>
 </body>
 </html>
+

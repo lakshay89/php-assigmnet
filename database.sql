@@ -1,15 +1,6 @@
--- ============================================================
--- EdTech Innovate - Online Course Website Database Schema
--- Database: edtech_db
--- Compatibility: MySQL 5.7+ / MariaDB 10.3+
--- ============================================================
-
 CREATE DATABASE IF NOT EXISTS `edtech_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `edtech_db`;
 
--- ------------------------------------------------------------
--- Table: categories
--- ------------------------------------------------------------
 DROP TABLE IF EXISTS `courses`;
 DROP TABLE IF EXISTS `categories`;
 
@@ -27,9 +18,6 @@ CREATE TABLE `categories` (
   INDEX `idx_categories_status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Table: courses
--- ------------------------------------------------------------
 CREATE TABLE `courses` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `category_id` INT UNSIGNED NULL,
@@ -55,9 +43,6 @@ CREATE TABLE `courses` (
   CONSTRAINT `fk_courses_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ------------------------------------------------------------
--- Table: contact_messages (Persistent Contact Submissions)
--- ------------------------------------------------------------
 DROP TABLE IF EXISTS `contact_messages`;
 
 CREATE TABLE `contact_messages` (
@@ -72,9 +57,6 @@ CREATE TABLE `contact_messages` (
   INDEX `idx_contact_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- ============================================================
--- SEED DATA: Categories
--- ============================================================
 INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `icon`, `status`) VALUES
 (1, 'Web Development', 'web-development', 'Master modern front-end and back-end web development with hands-on projects.', 'bi-code-slash', 'active'),
 (2, 'Data Science & AI', 'data-science-ai', 'Learn machine learning, data analytics, predictive models, and Python programming.', 'bi-cpu', 'active'),
@@ -83,9 +65,6 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `description`, `icon`, `status`)
 (5, 'Mobile Development', 'mobile-development', 'Build cross-platform iOS and Android apps using React Native and Flutter.', 'bi-phone', 'active'),
 (6, 'Cybersecurity', 'cybersecurity', 'Protect computer systems, networks, and confidential data against modern threats.', 'bi-shield-check', 'active');
 
--- ============================================================
--- SEED DATA: Courses
--- ============================================================
 INSERT INTO `courses` (
   `id`, `category_id`, `name`, `slug`, `price`, `image`,
   `short_description`, `full_description`, `duration`, `level`,

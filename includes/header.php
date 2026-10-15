@@ -1,12 +1,6 @@
 <?php
-/**
- * Global Header Component
- * EdTech Innovate - Online Course Website
- */
-
 require_once __DIR__ . '/functions.php';
 
-// Safe fallbacks for Dynamic SEO Variables
 $pageTitle = $pageTitle ?? (SITE_NAME . ' | ' . SITE_TAGLINE);
 $pageDescription = $pageDescription ?? 'Learn in-demand tech skills with EdTech Innovate. Dynamic online courses in Web Development, Data Science, Cloud, UI/UX, and Cybersecurity.';
 $canonicalUrl = $canonicalUrl ?? (isset($_SERVER['REQUEST_SCHEME'], $_SERVER['HTTP_HOST'], $_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] : '');
@@ -19,7 +13,6 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <!-- Dynamic Primary SEO Tags -->
   <title><?php echo e($pageTitle); ?></title>
   <meta name="title" content="<?php echo e($pageTitle); ?>">
   <meta name="description" content="<?php echo e($pageDescription); ?>">
@@ -28,7 +21,6 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
     <link rel="canonical" href="<?php echo e($canonicalUrl); ?>">
   <?php endif; ?>
 
-  <!-- OpenGraph / Social Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="<?php echo e($pageTitle); ?>">
   <meta property="og:description" content="<?php echo e($pageDescription); ?>">
@@ -37,21 +29,16 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
   <?php endif; ?>
   <meta property="og:site_name" content="<?php echo e(SITE_NAME); ?>">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="<?php echo base_url('assets/images/logo.svg'); ?>">
 
-  <!-- Bootstrap 5.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-  <!-- Master Custom CSS -->
   <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
 </head>
 <body>
 
-<!-- Header & Main Navigation Bar -->
 <header class="sticky-top">
   <nav class="navbar navbar-expand-lg site-navbar py-2 py-lg-3" aria-label="Main Navigation">
     <div class="container">
@@ -59,12 +46,10 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
         <img src="<?php echo base_url('assets/images/logo.svg'); ?>" alt="<?php echo e(SITE_NAME); ?> Logo" height="42">
       </a>
 
-      <!-- Mobile Navigation Hamburger -->
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNavbar" aria-controls="primaryNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- Navigation Links -->
       <div class="collapse navbar-collapse" id="primaryNavbar">
         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
           <li class="nav-item">
@@ -89,7 +74,6 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
           </li>
         </ul>
 
-        <!-- Action CTA in Navigation -->
         <div class="d-flex align-items-center gap-2">
           <a href="<?php echo base_url('courses.php'); ?>" class="btn btn-primary rounded-pill px-4">
             <i class="bi bi-compass me-1"></i> Explore Courses
@@ -100,5 +84,5 @@ $currentRoute = $currentRoute ?? basename($_SERVER['SCRIPT_NAME'] ?? '');
   </nav>
 </header>
 
-<!-- Main Container Hook -->
 <main id="main-content">
+

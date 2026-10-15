@@ -1,12 +1,4 @@
 <?php
-/**
- * About Us Page
- * EdTech Innovate - Online Course Website
- * 
- * Professional overview of educational philosophy, platform architecture,
- * and pedagogical mission.
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
@@ -18,7 +10,6 @@ $currentRoute = 'about.php';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- About Hero Banner -->
 <section class="bg-white border-bottom py-5">
   <div class="container py-lg-4">
     <div class="row align-items-center g-5">
@@ -55,7 +46,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- The Three Pedagogical Pillars -->
 <section class="py-5">
   <div class="container py-lg-4">
     <div class="text-center mb-5">
@@ -106,7 +96,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Platform Technology Stack Overview -->
 <section class="py-5 bg-light-subtle border-top border-bottom">
   <div class="container py-lg-4">
     <div class="row align-items-center g-5">
@@ -160,7 +149,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Call to Action -->
 <section class="py-5 text-center">
   <div class="container py-3">
     <h2 class="display-6 fw-bold mb-3">Start Building Your Skills Today</h2>

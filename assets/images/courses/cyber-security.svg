@@ -18,15 +18,13 @@
   <circle cx="126" cy="64" r="5" fill="#10b981"/>
   <text x="150" y="68" font-family="monospace" font-size="11" fill="#4ade80">security_terminal - Defensive Sec &amp; Pentesting</text>
 
-  <!-- Big Shield -->
   <g transform="translate(100, 100)">
     <path d="M70 10L10 35V80C10 120 70 150 70 150C70 150 130 120 130 80V35L70 10Z" fill="url(#shieldGrad)" />
-    <!-- Lock inside shield -->
+    
     <rect x="52" y="80" width="36" height="30" rx="6" fill="#09090b" />
     <path d="M58 80V68C58 61.4 63.4 56 70 56C76.6 56 82 61.4 82 68V80" stroke="#09090b" stroke-width="6" fill="none" stroke-linecap="round"/>
   </g>
 
-  <!-- Terminal Commands on Right -->
   <text x="270" y="130" font-family="monospace" font-size="13" fill="#4ade80">$ nmap -sS -A 192.168.1.10</text>
   <text x="270" y="160" font-family="monospace" font-size="13" fill="#a1a1aa">[+] Port 443/tcp OPEN (TLS 1.3)</text>
   <text x="270" y="190" font-family="monospace" font-size="13" fill="#a1a1aa">[+] OWASP Top 10 Audit: PASSED</text>

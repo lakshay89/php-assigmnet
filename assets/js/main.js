@@ -1,10 +1,4 @@
-/**
- * EdTech Innovate - Client-Side Interactive Logic
- * Plain Vanilla JavaScript (No heavy frameworks required)
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Bootstrap 5 Form Validation Trigger
   const forms = document.querySelectorAll('.needs-validation');
   Array.from(forms).forEach((form) => {
     form.addEventListener(
@@ -20,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   });
 
-  // 2. Navbar shadow elevation on page scroll
   const navbar = document.querySelector('.site-navbar');
   if (navbar) {
     const handleScroll = () => {
@@ -34,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
   }
 
-  // 3. Auto-hide flash notifications after 6 seconds with smooth fade
   const flashAlerts = document.querySelectorAll('.alert-dismissible');
   flashAlerts.forEach((alert) => {
     setTimeout(() => {

@@ -1,35 +1,21 @@
 <?php
-/**
- * Dynamic Course Details Controller & Single Reusable Template
- * EdTech Innovate - Online Course Website
- * 
- * Fetches course dynamically by slug from MySQL using prepared statements.
- * Renders dynamic SEO metadata, breadcrumbs, full curriculum, and related courses.
- * Returns HTTP 404 for missing or draft/unpublished courses.
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
-// 1. Extract and sanitize slug from query string or URL rewrite
 $slug = trim($_GET['slug'] ?? '');
 
-// If slug is empty or contains illegal characters, trigger 404
 if ($slug === '' || !preg_match('/^[a-zA-Z0-9\-_]+$/', $slug)) {
     require __DIR__ . '/404.php';
     exit;
 }
 
-// 2. Fetch course using PDO prepared statement (Strictly published courses)
 $course = get_course_by_slug($slug);
 
-// 3. If course not found or not published, return HTTP 404
 if (!$course) {
     require __DIR__ . '/404.php';
     exit;
 }
 
-// 4. Set Dynamic SEO Variables
 $pageTitle = !empty($course['meta_title']) 
     ? $course['meta_title'] 
     : ($course['name'] . ' | ' . SITE_NAME);
@@ -41,13 +27,12 @@ $pageDescription = !empty($course['meta_description'])
 $canonicalUrl = course_url($course['slug']);
 $currentRoute = 'course-details.php';
 
-// 5. Fetch Related Courses from the same category
 $relatedCourses = [];
 if (!empty($course['category_id'])) {
     $relatedCourses = get_related_courses((int)$course['category_id'], (int)$course['id'], 3);
 }
 
-// 6. Render Layout
 include __DIR__ . '/includes/header.php';
 include __DIR__ . '/templates/course-details-template.php';
 include __DIR__ . '/includes/footer.php';
+

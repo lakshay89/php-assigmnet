@@ -1,19 +1,9 @@
 <?php
-/**
- * Dynamic Courses Listing Page & Category Filter
- * EdTech Innovate - Online Course Website
- * 
- * Fetches published courses from MySQL with real-time category filtering.
- * Safe allowlisting and prepared statements for all parameters.
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
-// 1. Fetch all active categories from MySQL
 $categories = get_all_categories();
 
-// 2. Handle category filter safely
 $selectedCategorySlug = trim($_GET['category'] ?? '');
 $selectedCategory = null;
 $categoryId = null;
@@ -24,16 +14,13 @@ if ($selectedCategorySlug !== '' && $selectedCategorySlug !== 'all') {
     if ($selectedCategory) {
         $categoryId = (int)$selectedCategory['id'];
     } else {
-        // Safe handling for invalid category slug in query string
         $invalidCategoryNotice = true;
     }
 }
 
-// 3. Fetch published courses
 $courses = get_published_courses($categoryId);
 $totalPublishedCount = count($courses);
 
-// 4. Set Dynamic SEO Metadata
 if ($selectedCategory) {
     $pageTitle = $selectedCategory['name'] . ' Courses & Certifications | ' . SITE_NAME;
     $pageDescription = !empty($selectedCategory['description']) 
@@ -50,7 +37,6 @@ $currentRoute = 'courses.php';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Courses Catalog Header Banner -->
 <section class="bg-white border-bottom py-5">
   <div class="container">
     <nav aria-label="breadcrumb" class="mb-2">
@@ -91,11 +77,9 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Main Course Directory & Filter Controls -->
 <section class="py-5">
   <div class="container">
 
-    <!-- Invalid Category Alert Feedback -->
     <?php if ($invalidCategoryNotice): ?>
       <div class="alert alert-warning alert-dismissible fade show rounded-3 mb-4 d-flex align-items-center" role="alert">
         <i class="bi bi-exclamation-triangle-fill fs-4 me-3 text-warning"></i>
@@ -106,18 +90,15 @@ include __DIR__ . '/includes/header.php';
       </div>
     <?php endif; ?>
 
-    <!-- Category Filter Bar -->
     <div class="mb-4">
       <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pb-3 border-bottom">
         <div class="d-flex flex-wrap align-items-center gap-2">
           <span class="fw-bold small text-secondary me-2"><i class="bi bi-funnel-fill me-1"></i> Filter By:</span>
           
-          <!-- All Categories Pill -->
           <a href="<?php echo base_url('courses.php'); ?>" class="filter-pill <?php echo (!$selectedCategory && !$invalidCategoryNotice) ? 'active' : ''; ?>">
             All Domains
           </a>
 
-          <!-- Dynamic Category Pills from MySQL -->
           <?php foreach ($categories as $cat): ?>
             <?php 
               $isActive = ($selectedCategory && $selectedCategory['slug'] === $cat['slug']);
@@ -138,7 +119,6 @@ include __DIR__ . '/includes/header.php';
       </div>
     </div>
 
-    <!-- Courses Grid -->
     <?php if (!empty($courses)): ?>
       <div class="row g-4">
         <?php foreach ($courses as $course): ?>
@@ -146,7 +126,6 @@ include __DIR__ . '/includes/header.php';
         <?php endforeach; ?>
       </div>
     <?php else: ?>
-      <!-- Empty State -->
       <div class="row justify-content-center py-4">
         <div class="col-md-8 col-lg-6">
           <div class="empty-state p-5 bg-white shadow-sm">

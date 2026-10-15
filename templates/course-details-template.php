@@ -1,13 +1,4 @@
 <?php
-/**
- * Dynamic Course Details Template
- * EdTech Innovate - Online Course Website
- * 
- * Scope variables:
- * - array $course
- * - array $relatedCourses
- */
-
 if (!isset($course) || empty($course)) {
     return;
 }
@@ -24,10 +15,8 @@ $imageSrc      = !empty($course['image']) ? base_url($course['image']) : base_ur
 $altText       = e($courseName) . ' course banner and curriculum cover';
 ?>
 
-<!-- Course Details Hero Banner -->
 <section class="course-details-hero">
   <div class="container">
-    <!-- Breadcrumb Navigation -->
     <nav aria-label="breadcrumb" class="mb-3">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>"><i class="bi bi-house-door me-1"></i>Home</a></li>
@@ -53,14 +42,12 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
           </span>
         </div>
 
-        <!-- Dynamic H1 Heading -->
         <h1 class="fw-bold mb-3"><?php echo e($courseName); ?></h1>
 
         <p class="lead text-light-subtle mb-4" style="color: #cbd5e1; font-size: 1.15rem;">
           <?php echo e($shortDesc); ?>
         </p>
 
-        <!-- Course Meta Strip -->
         <div class="d-flex flex-wrap gap-4 text-light-subtle small border-top border-secondary pt-3" style="color: #94a3b8;">
           <div><i class="bi bi-clock-history me-1 text-info"></i> Duration: <strong class="text-white"><?php echo e($duration); ?></strong></div>
           <div><i class="bi bi-translate me-1 text-info"></i> Language: <strong class="text-white">English</strong></div>
@@ -71,12 +58,9 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
   </div>
 </section>
 
-<!-- Course Main Content & Sticky Enrollment Sidebar -->
 <div class="container py-5">
   <div class="row g-4 g-lg-5">
-    <!-- Left Column: Detailed Overview & Curriculum -->
     <div class="col-lg-8">
-      <!-- Media Banner on Mobile & Content Preview -->
       <div class="card border-0 rounded-4 overflow-hidden shadow-sm mb-4">
         <img 
           src="<?php echo $imageSrc; ?>" 
@@ -86,7 +70,6 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
         >
       </div>
 
-      <!-- What You Will Learn Card -->
       <div class="card border-0 rounded-4 shadow-sm p-4 p-md-5 mb-4 bg-white">
         <h2 class="h4 fw-bold mb-3"><i class="bi bi-check2-circle text-primary me-2"></i>What You Will Master</h2>
         <div class="row g-3">
@@ -117,18 +100,13 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
         </div>
       </div>
 
-      <!-- Full Syllabus / Description -->
       <div class="course-curriculum-box shadow-sm bg-white">
         <h2 class="h4 fw-bold mb-4"><i class="bi bi-journal-code text-primary me-2"></i>Detailed Course Curriculum</h2>
         <div class="course-rich-content">
-          <?php 
-          // Render rich formatted description safely allowing sanitized tags
-          echo $fullDesc; 
-          ?>
+          <?php echo $fullDesc; ?>
         </div>
       </div>
 
-      <!-- Prerequisites -->
       <div class="card border-0 rounded-4 shadow-sm p-4 bg-white">
         <h3 class="h5 fw-bold mb-2"><i class="bi bi-info-circle text-primary me-2"></i>Prerequisites &amp; Requirements</h3>
         <p class="text-secondary small mb-2">
@@ -140,7 +118,6 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
       </div>
     </div>
 
-    <!-- Right Column: Sticky Enrollment Sidebar -->
     <div class="col-lg-4">
       <aside class="course-sidebar-card" aria-label="Course Enrollment Box">
         <div class="course-sidebar-body">
@@ -165,7 +142,6 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
             </a>
           </div>
 
-          <!-- Highlights List -->
           <h4 class="h6 fw-bold mb-3">This course includes:</h4>
           <ul class="list-unstyled d-flex flex-column gap-2 small text-secondary mb-4">
             <li><i class="bi bi-play-circle text-primary me-2"></i> On-demand video lectures &amp; guided labs</li>
@@ -184,7 +160,6 @@ $altText       = e($courseName) . ' course banner and curriculum cover';
     </div>
   </div>
 
-  <!-- Related Courses Section -->
   <?php if (!empty($relatedCourses)): ?>
     <section class="mt-5 pt-4 border-top">
       <div class="d-flex justify-content-between align-items-end mb-4">

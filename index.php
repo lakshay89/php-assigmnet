@@ -1,20 +1,10 @@
 <?php
-/**
- * Dynamic Home Page
- * EdTech Innovate - Online Course Website
- * 
- * Renders hero banner, dynamic categories from MySQL,
- * dynamic featured courses from MySQL, and learning benefits.
- */
-
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/includes/functions.php';
 
-// 1. Fetch dynamic categories and featured courses from MySQL
 $categories = get_all_categories();
 $featuredCourses = get_featured_courses(6);
 
-// 2. Set Dynamic SEO Metadata
 $pageTitle = SITE_NAME . ' | ' . SITE_TAGLINE;
 $pageDescription = 'Advance your career with industry-focused online courses in Web Development, Cloud Computing, Data Science, AI, and Cybersecurity.';
 $canonicalUrl = base_url();
@@ -23,7 +13,6 @@ $currentRoute = 'index.php';
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- Hero Section -->
 <section class="hero-section">
   <div class="container">
     <div class="row align-items-center g-5">
@@ -78,7 +67,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Trust & Stats Strip -->
 <section class="hero-stats-strip">
   <div class="container">
     <div class="row g-4 text-center">
@@ -110,7 +98,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Browse Categories Section (Dynamic from MySQL) -->
 <section class="py-5" id="browse-categories">
   <div class="container py-lg-4">
     <div class="text-center mb-5">
@@ -153,7 +140,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Featured Courses Section (Dynamic from MySQL) -->
 <section class="py-5 bg-light-subtle">
   <div class="container py-lg-4">
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
@@ -184,7 +170,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Learning Benefits / Why Choose Us Section -->
 <section class="py-5">
   <div class="container py-lg-5">
     <div class="text-center mb-5">
@@ -247,7 +232,6 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- Call to Action Banner -->
 <section class="py-5" style="background: var(--hero-gradient); color: #ffffff;">
   <div class="container py-4 text-center">
     <div class="row justify-content-center">
